@@ -22,10 +22,9 @@ OPS separates **continuity** from **performance**:
 
 4. **Every degradation is visible.** Missing media, summarized history, unavailable tools, cache misses, and rejected accelerators are reported in a structured restore report rather than being silently ignored.
 
-The architectural model:
+## The architectural model
 
 <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/6dfea5a4-3483-4244-9f2e-37e022549ebc" />
-
 
 The controller or session service owns the session. The gateway continues to route. The inference engine continues to serve models. Cache systems such as LMCache continue to manage engine-native prefix state. None of those infrastructure layers is asked to understand agent plans, tools, credentials, or workspace semantics.
 
