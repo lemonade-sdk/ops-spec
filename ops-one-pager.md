@@ -14,7 +14,7 @@ Moving from a laptop to an on-prem cluster, escalating inference to a larger mod
 
 OPS separates **continuity** from **performance**:
 
-1. **Semantic continuity is guaranteed through replay.** Every Every conformant OPS destination must be able to reconstruct the session from its messages, tool state, attachments, plans, workspace references, and other declared resources. This is the universal fallback and works across different models and inference engines (llamacpp, vLLM etc.).
+1. **Semantic continuity is guaranteed through replay.** Every conformant OPS destination must be able to reconstruct the session from its messages, tool state, attachments, plans, workspace references, and other declared resources. This is the universal fallback and works across different models and inference engines (llamacpp, vLLM etc.).
 
 2. **Acceleration is optional and verified.** A destination may reuse compatible KV state, discover an existing cached prefix through systems such as LMCache, or use a future cross-model mapping mechanism. If validation fails, the session still resumes through replay.
 
@@ -48,4 +48,4 @@ The initial implementation requires only:
 * An **exporter** in a source controller such as Lemonade.
 * A lightweight **session service** that imports the checkpoint, reconstructs the session, reconnects authorized resources, and sends ordinary requests to any OpenAI-compatible backend.
 
-The replay path requires no modifications to inference gateways, vLLM pods, or cache providers. Destination-native cache reuse can be enabled through configuration. Engine-specific acceleration profiles can then be added independently, without changing the core session format.
+On the reference stack, the replay path requires no modifications to inference gateways, vLLM pods, or cache providers. Destination-native cache reuse can be enabled through configuration. Engine-specific acceleration profiles can then be added independently, without changing the core session format.
